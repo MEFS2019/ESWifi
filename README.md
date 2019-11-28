@@ -26,3 +26,13 @@ Montar la infraestructura y la fase de diseño y flujo de la configuración.
 Utilizaremos para el desarrollo de la aplicación [Ionic](https://ionicframework.com/) y [Capacitor](https://capacitor.ionicframework.com/)
 
 La funcionalidad inicial será la de poder conectarnos a la wifi del usuario mediante las credenciales que nos proporcione. Una vez veamos que son correctas, comprobaremos la robustez de la contraseña.
+
+Para comprobar la robustez podemos utilizar algún servicio que compruebe si aparece en un fuga de datos como puede ser [HaveIBeenPwen](https://haveibeenpwned.com/API/v3#PwnedPasswords) o comprobando manualmente si sigue unas mínimas reglas de seguridad, como las que proporciona (OSI)[https://www.osi.es/es/contrasenas#robustas].
+
+Debemos asegurarnos que la contraseña tenga:
+
+- longitud mínima de ocho caracteres
+- mayúsculas
+- minúsculas
+- números
+- símbolos
