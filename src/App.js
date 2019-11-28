@@ -10,7 +10,7 @@ import {
   IonTabs
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { apps, flash } from "ionicons/icons";
+import { apps, flash, bug } from "ionicons/icons";
 import Tab2 from "pages/Tab2";
 import Tab3 from "pages/Tab3";
 import AddNetwork from "pages/AddNetwork";
@@ -56,8 +56,8 @@ const App = () => (
             <IonLabel>Tab 2</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={apps} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonIcon icon={bug} />
+            <IonLabel>Debugiar WebView</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
