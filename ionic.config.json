@@ -1,0 +1,7 @@
+{
+  "name": "esWiFi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "esWiFi",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}
