@@ -10,11 +10,11 @@ import {
   IonTabs
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { apps, flash, bug } from "ionicons/icons";
-import Tab2 from "pages/Tab2";
-import Tab3 from "pages/Tab3";
-import AddNetwork from "pages/AddNetwork";
+import { flash, bug } from "ionicons/icons";
+
+import Start from "./pages/Start";
 import CheckNetwork from "pages/CheckNetwork";
+import WebViewDebugger from "./pages/WebViewDebugger";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -40,24 +40,27 @@ const App = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/new" component={AddNetwork} exact={true} />
-          <Route path="/check/:network" component={CheckNetwork} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab3" component={Tab3} exact={true} />
-          <Route path="/" render={() => <Redirect to="/new" />} exact={true} />
+          <Route path="/start" component={Start} exact={true} />
+          <Route path="/check" component={CheckNetwork} exact={true} />
+          <Route
+            path="/webViewDebugger"
+            component={WebViewDebugger}
+            exact={true}
+          />
+          <Route
+            path="/"
+            render={() => <Redirect to="/start" />}
+            exact={true}
+          />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="new" href="/new">
+          <IonTabButton tab="start" href="/start">
             <IonIcon icon={flash} />
-            <IonLabel>Add new network</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={apps} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonLabel>Securizame esta</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={bug} />
-            <IonLabel>Debugiar WebView</IonLabel>
+            <IonLabel>Debuguiar WebView</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

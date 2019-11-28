@@ -16,7 +16,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 let webView = null;
 
-const Tab3Page = () => {
+const WebViewDebugger = () => {
   const [url, setURL] = useState("");
   const [script, setScript] = useState("");
 
@@ -57,4 +57,4 @@ const Tab3Page = () => {
   );
 };
 
-export default Tab3Page;
+export default WebViewDebugger;
