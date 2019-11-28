@@ -1,2 +1,20 @@
 # ESWifi
 Proyecto Cybercamp 2019
+
+## Propuesta enviada
+MEF - ESWifi: configuración de Wi-Fis para usuario final sin conocimientos técnicos.
+
+Queremos que cualquier persona pueda tener configurada de manera segura su punto de acceso WiFi sin necesidad de ser técnico y con la mínima interacción posible con el portal de administración. Para realizar esta configuración se seguirán las buenas practicas proporcionadas por [INCIBE](https://www.incibe.es/sites/default/files/contenidos/guias/doc/guia-de-seguridad-en-redes-wifi.pdf)
+
+Uno de los problemas principales es la poca homogeneidad entre proveedores de servicio, para esté hackathon trataremos de realizar las pruebas en dos entornos distintos, uno de ellos utilizando un router flasheando con un sistema OpenSource como es [OpenWRT](https://openwrt.org/) y por otro lado utilizaremos uno de proveedor de Orange (Livebox Fibra).
+
+# Hito 1
+
+Montar la infraestructura y la fase de diseño y flujo de la configuración.
+
+![Componentes](/Imagenes/Inicio.jpg)
+
+
+Utilizaremos para el desarrollo de la aplicación [Iodine]()
+
+La funcionalidad inicial será la de poder conectarnos a la wifi del usuario mediante las credenciales que nos proporcione. Una vez veamos que son correctas, comprobaremos la robustez de la contraseña.
