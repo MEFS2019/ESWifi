@@ -4,10 +4,10 @@ Proyecto Cybercamp 2019
 
 ## Useful scripts
 
-- `start`: Serve the app with hot reload enabled. Useful for development.
+- `start`: Serves the app with hot reload enabled. Useful for development.
 - `build`: Creates a production-ready build.
+- `build:sync`: Same as build, but also copies the built files to the native projects and adds any new native dependencies.
 - `open:[ios/android]`: Opens the native project in its corresponding IDE (Android Studio/Xcode).
-- `build:sync`: Same as build, but also syncs the built files with the native projects.
 
 ## Propuesta enviada
 
@@ -23,6 +23,6 @@ Montar la infraestructura y la fase de diseño y flujo de la configuración.
 
 ![Componentes](/Imagenes/Inicio.jpg)
 
-Utilizaremos para el desarrollo de la aplicación [Iodine]()
+Utilizaremos para el desarrollo de la aplicación [Ionic](https://ionicframework.com/) y [Capacitor](https://capacitor.ionicframework.com/)
 
 La funcionalidad inicial será la de poder conectarnos a la wifi del usuario mediante las credenciales que nos proporcione. Una vez veamos que son correctas, comprobaremos la robustez de la contraseña.
