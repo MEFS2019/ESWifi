@@ -21,6 +21,7 @@
     "cordova-plugin-aes256-encryption": "^2.0.0",
     "cordova-plugin-fingerprint-aio": "^2.0.0",
     "cordova-plugin-inappbrowser": "^3.1.0",
+    "cordova.plugins.diagnostic": "^5.0.1",
     "ionicons": "^4.6.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

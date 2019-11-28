@@ -22,7 +22,7 @@ const networks = [
 
 const AddNetwork = () => {
   const handleNetworkSelection = networkName => {
-    console.log(networkName);
+    window.cordova.plugins.diagnostic.switchToWifiSettings();
   };
 
   return (
