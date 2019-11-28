@@ -6,6 +6,7 @@ import {
   IonTitle,
   IonContent
 } from "@ionic/react";
+import ChangePassword from "components/forms/ChangePassword";
 
 const Tab3Page = () => {
   return (
@@ -15,7 +16,9 @@ const Tab3Page = () => {
           <IonTitle>Tab Three</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent />
+      <IonContent>
+        <ChangePassword></ChangePassword>
+      </IonContent>
     </IonPage>
   );
 };

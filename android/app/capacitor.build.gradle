@@ -13,7 +13,6 @@ dependencies {
 
 }
 apply from: "../../node_modules/cordova-plugin-aes256-encryption/src/android/plugin.gradle"
-apply from: "../../node_modules/cordova-plugin-fingerprint-aio/src/android/build.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()
