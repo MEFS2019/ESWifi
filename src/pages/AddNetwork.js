@@ -22,7 +22,13 @@ const networks = [
 
 const AddNetwork = () => {
   const handleNetworkSelection = networkName => {
-    console.log(networkName);
+    window.cordova.plugins.diagnostic.switchToWifiSettings();
+    // cordova.plugins.diagnostic.switchToSettings(function(){
+      // console.log("Successfully switched to Settings app");
+    // }, function(error){
+      // console.error("The following error occurred: "+error);
+    // });
+    //console.log(networkName);
   };
 
   return (
