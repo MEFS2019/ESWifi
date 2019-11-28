@@ -11,9 +11,10 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { apps, flash } from "ionicons/icons";
-import Tab2 from "./pages/Tab2";
-import Tab3 from "./pages/Tab3";
-import AddNetwork from "./pages/AddNetwork";
+import Tab2 from "pages/Tab2";
+import Tab3 from "pages/Tab3";
+import AddNetwork from "pages/AddNetwork";
+import CheckNetwork from "pages/CheckNetwork";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -32,7 +33,7 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import "./theme/variables.css";
+import "theme/variables.css";
 
 const App = () => (
   <IonApp>
@@ -40,6 +41,7 @@ const App = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/new" component={AddNetwork} exact={true} />
+          <Route path="/check/:network" component={CheckNetwork} exact={true} />
           <Route path="/tab2" component={Tab2} exact={true} />
           <Route path="/tab3" component={Tab3} exact={true} />
           <Route path="/" render={() => <Redirect to="/new" />} exact={true} />

@@ -20,9 +20,11 @@ const networks = [
   }
 ];
 
-const AddNetwork = () => {
+const AddNetwork = props => {
   const handleNetworkSelection = networkName => {
-    console.log(networkName);
+    if (!networkName) return;
+    const { history } = props;
+    history.push(`/check/${networkName}`);
   };
 
   return (
