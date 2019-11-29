@@ -14,10 +14,10 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: ./android/gradlew build
+      run: ./android/gradlew assembleDebug --console plain
     - name: Upload artifact
       uses: ShaunLWM/action-release-debugapk@master
       env:
        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-       APP_FOLDER: app
+       APP_FOLDER: android/app/build/outputs/apk/debug
        RELEASE_TITLE: ESWifi Android Build
