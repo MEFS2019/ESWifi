@@ -1,6 +1,14 @@
 # ESWifi
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MEFS2019/ESWifi.svg)](https://greenkeeper.io/)
+
 Proyecto Cybercamp 2019
+
+
+![](https://github.com/MEFS2019/ESWifi/workflows/Android%20CI/badge.svg)
+[![Known Vulnerabilities](https://snyk.io/test/github/MEFS2019/ESWifi/badge.svg?targetFile=android/app/build.gradle)](https://snyk.io/test/github/MEFS2019/ESWifi?targetFile=android/app/build.gradle)
+
+
 
 ## Useful scripts
 
@@ -15,7 +23,14 @@ MEF - ESWifi: configuración de Wi-Fis para usuario final sin conocimientos te�
 
 Queremos que cualquier persona pueda tener configurada de manera segura su punto de acceso WiFi sin necesidad de ser técnico y con la mínima interacción posible con el portal de administración. Para realizar esta configuración se seguirán las buenas practicas proporcionadas por [INCIBE](https://www.incibe.es/sites/default/files/contenidos/guias/doc/guia-de-seguridad-en-redes-wifi.pdf)
 
-Uno de los problemas principales es la poca homogeneidad entre proveedores de servicio, para esté hackathon trataremos de realizar las pruebas en dos entornos distintos, uno de ellos utilizando un router flasheando con un sistema OpenSource como es [OpenWRT](https://openwrt.org/) y por otro lado utilizaremos uno de proveedor de Orange (Livebox Fibra).
+Uno de los problemas principales es la poca homogeneidad entre proveedores de servicio. Los más conocidos son:
+- Movistar
+- MasMovil
+- Vodafone
+- Orange
+- Yoigo
+
+Para esté hackathon trataremos de realizar las pruebas en dos entornos distintos, uno de ellos utilizando un router flasheando con un sistema OpenSource como es [OpenWRT](https://openwrt.org/) y por otro lado utilizaremos uno de proveedor de Orange (Livebox Fibra). La idea es que no sea dependiente del proveedor y la aplicación sea capaz de realizar las configuraciones de todas ellas.
 
 # Hito 1
 
