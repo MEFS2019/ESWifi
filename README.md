@@ -2,6 +2,9 @@
 
 Proyecto Cybercamp 2019
 
+![](https://github.com/MEFS2019/ESWifi/workflows/.github/workflows/android.yml/badge.svg)
+
+
 ## Useful scripts
 
 - `start`: Serves the app with hot reload enabled. Useful for development.
