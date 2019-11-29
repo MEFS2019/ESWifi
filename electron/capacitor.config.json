@@ -6,6 +6,6 @@
   "webDir": "build",
   "cordova": {},
   "server": {
-    "allowNavigation": ["192.168.1.*"]
+    "url": "http://192.168.1.187:3000/start/selectRouter"
   }
 }

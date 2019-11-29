@@ -5,11 +5,7 @@ export class BrowserSession {
   browser = null;
 
   constructor({ url, hidden = true }) {
-    this.browser = InAppBrowser.create(
-      url,
-      "_blank",
-      `hidden=${hidden ? "yes" : "no"}`
-    );
+    this.browser = InAppBrowser.create(url, "_blank", `usewkwebview=yes`);
   }
 
   navigate({ url }) {
@@ -54,22 +50,9 @@ export class BrowserSession {
       console.log(2);
       const observable = this.browser.on("message").subscribe(event => {
         const {
-          data: { type, detail }
+          data: { action }
         } = event;
-        if (type === "resolve") {
-          resolve(detail);
-          observable.unsubscribe();
-        } else if (type === "reject") {
-          reject(detail);
-          observable.unsubscribe();
-        } else {
-          if (!timer) {
-            timer = setTimeout(() => {
-              reject("Timeout exceeded");
-              observable.unsubscribe();
-            }, timeout);
-          }
-        }
+        alert(action);
       });
       this.browser.executeScript({ code: script });
       console.log(script);
