@@ -16,7 +16,8 @@ jobs:
     - name: Build with Gradle
       run: ./android/gradlew build
     - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: ESWifi-android
-        path: app
+      uses: ShaunLWM/action-release-debugapk@master
+      env:
+       GITHUB_TOKEN: ${{ secrets.TOKEN }}
+       APP_FOLDER: app
+       RELEASE_TITLE: ESWifi Android Build
