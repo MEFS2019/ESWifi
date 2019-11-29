@@ -34,7 +34,7 @@ Currently is available for Android app and iOS. We are working on a desktop app 
 
 ### For developers
 
-You can contribute with simple scripts, which are loaded into the application. These are the [standard](https://github.com/MEFS2019/ESWifi/wiki/3.-Nuevo-proveedor-Wifi), we will be happy to receive your pull requests :)
+You can contribute with simple scripts, which are loaded into the application. These are the [standard](https://github.com/MEFS2019/ESWifi/wiki/3.-Add-new-firmware), we will be happy to receive your pull requests :)
 
 #### Requirements
 
@@ -55,4 +55,4 @@ You can contribute with simple scripts, which are loaded into the application. T
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
