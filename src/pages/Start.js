@@ -5,7 +5,6 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonItem,
   IonButton,
   isPlatform,
   IonGrid,

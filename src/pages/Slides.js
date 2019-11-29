@@ -27,17 +27,17 @@ const Slides = props => {
         <IonContent fullscreen padding scroll-y="false">
             <IonSlides pager={false} options={slideOpts}>
                 <IonSlide>
-                    < img src = "./assets/img/slide-1.png" />
+                    <img src = "./assets/img/slide-1.png" alt="" />
                     <h2>Welcome to the <b>ESWifi</b></h2>
                     <p>The <b>easy securization wifi app</b> is a practical app to easy securitize your wifi</p>
                 </IonSlide>
                 <IonSlide>
-                    <img src="./assets/img/slide-2.png" />
+                    <img src="./assets/img/slide-2.png" alt="" />
                     <h2>What is ESWifi?</h2>
                     <p> <b> ESWifi </b> is an open source apk that enables everyone to securitize their wifi with easy steps.</p >
                 </IonSlide>
                 <IonSlide>
-                    <img src="./assets/img/slide-4.png" />
+                    <img src="./assets/img/slide-4.png" alt="" />
                     <h2>Ready to Play?</h2>
                     <IonButton fill="clear" onClick={continueHandler}>
                         Continue 
