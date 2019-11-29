@@ -1,17 +1,4 @@
 import React from "react";
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonItem,
-  IonButton,
-  isPlatform,
-  IonGrid,
-  IonRow,
-  IonCol
-} from "@ionic/react";
 
 import "./Start.css";
 
