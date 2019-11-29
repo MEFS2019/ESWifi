@@ -14,9 +14,9 @@ jobs:
       with:
         java-version: 1.8
     - name: Debug with Gradle
-      run: ./android/gradlew tasks --all  
+      run: cd android && ./gradlew tasks --all
     - name: Build with Gradle
-      run: ./android/gradlew build assembleDebug
+      run: ./gradlew build assembleDebug
     - name: Upload artifact
       uses: ShaunLWM/action-release-debugapk@master
       env:
