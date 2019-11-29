@@ -52,3 +52,7 @@ You can contribute with simple scripts, which are loaded into the application. T
 - `npm run build`: Creates a production-ready build.
 - `npm run build:sync`: Same as build, but also copies the built files to the native projects and adds any new native dependencies.
 - `npm run open:[ios/android]`: Opens the native project in its corresponding IDE (Android Studio/Xcode).
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
