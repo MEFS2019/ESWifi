@@ -13,5 +13,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Go to android root path
+      run: cd android
     - name: Basic dependencies check
       run: ./android/gradlew lint
