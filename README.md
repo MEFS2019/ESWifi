@@ -3,7 +3,7 @@
 Proyecto Cybercamp 2019
 
 
-![](https://github.com/MEFS2019/ESWifi/workflows/Android%20CI/badge.svg)
+![](https://github.com/MEFS2019/ESWifi/workflows/Android%20CI/badge.svgbranch=chore/enable-ci)
 
 
 ## Useful scripts
