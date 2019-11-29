@@ -1,7 +1,6 @@
-function login_orange(user, pass) {
+function login_orange(pass) {
 
-	document.querySelector("#maincontent > form > div.cbi-map > div.cbi-section > div > div:nth-child(1) > div > input").value = user
-	document.querySelector("#maincontent > form > div.cbi-map > div.cbi-section > div > div.cbi-value.cbi-value-last > div > input").value = pass
-	document.forms[0].submit()
+	document.getElementById('mainFrame').contentWindow.document.querySelector("#mainContent > table > tbody > tr > td:nth-child(2) > ul > li:nth-child(2) > div.readonly > input[type=password]").value = pass
+	document.getElementById('mainFrame').contentWindow.document.querySelector("#bt_save").click()
 
 }
