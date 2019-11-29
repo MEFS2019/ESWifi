@@ -29,9 +29,9 @@ const Dashboard = props => {
 
     //TODO No funciona el método
     const handleRoute = (event, route) => {
+        console.log(route);
         event.preventDefault();
         const { history } = props;
-        console.log(route);
         setShowModal(true);
         history.push("/dashboard/" + route);
     };
@@ -47,7 +47,7 @@ const Dashboard = props => {
                 <IonGrid>
                     {listFeatures.map(({ data, state, route }, i) => (
                     <IonRow key={i}>
-                        <BtnDashboard onClick={event =>  { handleRoute(event, route) }} data={data} state={state}></BtnDashboard>
+                        <BtnDashboard onClick={event =>  handleRoute(event, route) } data={data} state={state}></BtnDashboard>
                     </IonRow>
                     ))}
                 </IonGrid>
