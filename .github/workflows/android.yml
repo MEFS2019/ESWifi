@@ -14,8 +14,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: ./gradlew build
-      working-directory: ./android
+      run: ./android/gradlew build
     # - name: Upload artifact
     #   uses: ShaunLWM/action-release-debugapk@master
     #   env:
