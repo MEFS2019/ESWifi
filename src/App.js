@@ -10,13 +10,14 @@ import {
   IonTabs
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { flash, bug, apps } from "ionicons/icons";
+import { flash, bug, apps, qrScanner } from "ionicons/icons";
 
 import Start from "pages/Start";
 import SelectRouter from "pages/SelectRouter";
 import CheckNetwork from "pages/CheckNetwork";
 import WebViewDebugger from "pages/WebViewDebugger";
 import Dashboard from "pages/Dashboard";
+import QR from "pages/QR";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -51,6 +52,7 @@ const App = () => (
           <Route path="/start/check" component={CheckNetwork} exact={true} />
           <Route path="/debug" component={WebViewDebugger} exact={true} />
           <Route path="/dashboard" component={Dashboard} exact={true} />
+          <Route path="/qr" component={QR} exact={true} />
           <Route
             path="/webViewDebugger"
             component={WebViewDebugger}
@@ -74,7 +76,11 @@ const App = () => (
           <IonTabButton tab="dashboard" href ="/dashboard">
             <IonIcon icon = { apps } />
             <IonLabel>Dashboard</IonLabel>
-            </IonTabButton>
+          </IonTabButton>
+          <IonTabButton tab="qr" href ="/qr">
+            <IonIcon icon = { qrScanner } />
+            <IonLabel>QR</IonLabel>
+          </IonTabButton>
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
