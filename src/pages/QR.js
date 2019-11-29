@@ -8,9 +8,9 @@ import {
     IonContent
 } from "@ionic/react";
 
+import QRGenerator from "components/QRGenerator";
+
 const QR = () => {
-
-
     return (
         <IonPage>
             <IonHeader>
@@ -19,10 +19,9 @@ const QR = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-
+                <QRGenerator ssid="openwrt" cypher="WPA/WPA2" pass="" />
             </IonContent>
         </IonPage>
-
     );
 };
 
