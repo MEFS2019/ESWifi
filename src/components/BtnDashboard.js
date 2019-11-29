@@ -14,7 +14,7 @@ const BtnDashboard = props => {
     const { data: name, state: color } = props;
 
     return (
-        < IonButton style={{width: '25%'}} shape="round" expand="block" size="large" name="test" >
+        < IonButton style={{width: '65%'}} shape="round" expand="block" size="large" name="test" >
             < IonItem style={{width: '100%', font: "inherit"}}>
                 <IonIcon slot="start" color={ color ? "success" : "danger" } icon={checkbox}  />
                 {name}
