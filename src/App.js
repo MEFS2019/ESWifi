@@ -42,6 +42,7 @@ const App = () => (
         <IonRouterOutlet>
           <Route path="/start" component={Start} exact={true} />
           <Route path="/check" component={CheckNetwork} exact={true} />
+          <Route path="/debug" component={WebViewDebugger} exact={true} />
           <Route
             path="/webViewDebugger"
             component={WebViewDebugger}
@@ -58,7 +59,7 @@ const App = () => (
             <IonIcon icon={flash} />
             <IonLabel>Securizame esta</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="debug" href="/debug">
             <IonIcon icon={bug} />
             <IonLabel>Debuguiar WebView</IonLabel>
           </IonTabButton>
