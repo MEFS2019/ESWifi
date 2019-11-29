@@ -19,4 +19,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: app-release-unsigned.apk
-        path: android/app/build/outputs/apk/release
+        path: /home/runner/work/ESWifi/android/app/build/outputs/apk/release
