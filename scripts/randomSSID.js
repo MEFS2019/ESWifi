@@ -3,4 +3,6 @@
 function changeSSID(ssid) {
 	a = document.querySelector("#cbid\\.wireless\\.default_radio0\\.ssid")
 	a.setAttribute("value",ssid)
+	document.querySelector("#maincontent > form > div.cbi-page-actions > input.cbi-button.cbi-button-apply").click()
+
 }
