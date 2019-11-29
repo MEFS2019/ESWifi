@@ -9,13 +9,12 @@ import {
   IonItem,
   IonList,
   IonSpinner,
-  IonIcon
+  IonIcon,
+  IonAlert
 } from "@ionic/react";
 import { closeCircleOutline, checkmarkCircleOutline } from "ionicons/icons";
 
-import { connectToNetwork as connectToNetworkUtil } from "utils/connectToNetwork";
-
-import "./CheckNetwork.css";
+import { connectToPanel as connectToPanelUtil } from "utils/connectToPanel";
 
 const renderSteps = steps =>
   steps.map(step => {
@@ -39,12 +38,6 @@ const renderSteps = steps =>
   });
 
 const CheckNetwork = props => {
-  const {
-    match: {
-      params: { network }
-    }
-  } = props;
-
   const [steps, setSteps] = useState([]);
 
   const [displayPanelPasswordPrompt, togglePanelPasswordPrompt] = useState(
@@ -54,7 +47,14 @@ const CheckNetwork = props => {
     panelPasswordPromptCallback,
     setPanelPasswordPromptCallback
   ] = useState(() => {});
-  const [panelPassword, setPanelPassword] = useState("admin");
+
+  const [panelData, setPanelData] = useState({
+    gatewayAddress: "192.168.0.1",
+    user: "admin",
+    password: "admin"
+  });
+
+  const [retried, setRetried] = useState(false);
 
   const pushStep = step => {
     setSteps(currentSteps => [...currentSteps, step]);
@@ -69,41 +69,30 @@ const CheckNetwork = props => {
     );
   };
 
-  const askPanelPassword = () =>
-    new Promise(resolve => {
-      togglePanelPasswordPrompt(true);
+  const askPanelPassword = () => {
+    setPanelPasswordPromptCallback(() => data => {
+      if (data) {
+        setRetried(true);
+        setPanelData(data);
+      }
+      togglePanelPasswordPrompt(false);
     });
-
-  const connectToNetwork = async () => {
-    try {
-      pushStep({
-        id: "connectToNetwork",
-        label: `Connecting to ${network}`,
-        status: "pending"
-      });
-      await connectToNetworkUtil(network);
-      replaceStep({
-        id: "connectToNetwork",
-        label: `Connected to ${network}`,
-        status: "success"
-      });
-    } catch (error) {
-      replaceStep({
-        id: "connectToNetwork",
-        label: `Connection to ${network} failed`,
-        status: "error"
-      });
-    }
+    togglePanelPasswordPrompt(true);
   };
 
   const connectToPanel = async () => {
     try {
-      pushStep({
+      const initialStep = {
         id: "connectToPanel",
         label: `Connecting to administration panel`,
         status: "pending"
-      });
-      await connectToNetworkUtil(network);
+      };
+      if (retried) {
+        replaceStep(initialStep);
+      } else {
+        pushStep(initialStep);
+      }
+      await connectToPanelUtil(panelData);
       replaceStep({
         id: "connectToPanel",
         label: `Connected to administration panel`,
@@ -112,22 +101,20 @@ const CheckNetwork = props => {
     } catch (error) {
       replaceStep({
         id: "connectToPanel",
-        label: `Connection to administration panel failed`,
+        label: `Connection failed`,
         status: "error"
       });
       await askPanelPassword();
-      connectToPanel();
     }
   };
 
   const checkNetwork = async () => {
-    await connectToNetwork();
-    await connectToPanel();
+    connectToPanel();
   };
 
   useEffect(() => {
     checkNetwork();
-  }, []);
+  }, [panelData]);
 
   return (
     <IonPage className="CheckNetwork">
@@ -138,6 +125,53 @@ const CheckNetwork = props => {
       </IonHeader>
       <IonContent>
         <IonList lines="none">{renderSteps(steps)}</IonList>
+        <IonAlert
+          backdropDismiss={false}
+          translucent
+          header="Oops"
+          subHeader="We need some more info to access your network administration panel"
+          message="Please, check if your Gateway IP address, user name and password are correct."
+          isOpen={displayPanelPasswordPrompt}
+          onDidDismiss={() => panelPasswordPromptCallback(null)}
+          buttons={[
+            {
+              text: "I need help",
+              cssClass: "secondary",
+              handler: () => {
+                alert(
+                  "aqui habra unos docs to wapos sobre como encontrar esta informasión"
+                );
+                return false;
+              }
+            },
+            {
+              text: "Continue",
+              handler: data => {
+                panelPasswordPromptCallback(data);
+              }
+            }
+          ]}
+          inputs={[
+            {
+              name: "gatewayAddress",
+              type: "text",
+              placeholder: "Gateway address",
+              value: panelData.gatewayAddress
+            },
+            {
+              name: "user",
+              type: "text",
+              placeholder: "User",
+              value: panelData.user
+            },
+            {
+              name: "password",
+              type: "password",
+              placeholder: "Password",
+              value: panelData.password
+            }
+          ]}
+        ></IonAlert>
       </IonContent>
     </IonPage>
   );
