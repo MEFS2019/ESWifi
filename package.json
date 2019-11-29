@@ -19,7 +19,7 @@
     "@types/react-router": "^5.1.1",
     "@types/react-router-dom": "^5.1.0",
     "cordova-plugin-aes256-encryption": "^2.0.0",
-    "cordova-plugin-fingerprint-aio": "^2.0.0",
+    "cordova-plugin-fingerprint-aio": "^3.0.0",
     "cordova-plugin-inappbrowser": "^3.1.0",
     "cordova.plugins.diagnostic": "^5.0.1",
     "ionicons": "^4.6.3",
@@ -28,7 +28,7 @@
     "react-router": "^5.1.0",
     "react-router-dom": "^5.1.0",
     "react-scripts": "3.2.0",
-    "typescript": "3.6.3"
+    "typescript": "3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
