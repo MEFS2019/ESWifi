@@ -31,8 +31,8 @@ const Dashboard = props => {
         console.log(route);
         event.preventDefault();
         const { history } = props;
-        //setShowModal(true);
-        history.push("/dashboard/" + route);
+        setShowModal(true);
+        //history.push("/dashboard/" + route);
     };
 
     return (
