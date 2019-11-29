@@ -12,9 +12,10 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { flash, bug } from "ionicons/icons";
 
-import Start from "./pages/Start";
+import Start from "pages/Start";
+import SelectRouter from "pages/SelectRouter";
 import CheckNetwork from "pages/CheckNetwork";
-import WebViewDebugger from "./pages/WebViewDebugger";
+import WebViewDebugger from "pages/WebViewDebugger";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -41,7 +42,12 @@ const App = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/start" component={Start} exact={true} />
-          <Route path="/check" component={CheckNetwork} exact={true} />
+          <Route
+            path="/start/selectRouter"
+            component={SelectRouter}
+            exact={true}
+          />
+          <Route path="/start/check" component={CheckNetwork} exact={true} />
           <Route path="/debug" component={WebViewDebugger} exact={true} />
           <Route
             path="/webViewDebugger"

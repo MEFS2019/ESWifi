@@ -16,28 +16,20 @@ import { closeCircleOutline, checkmarkCircleOutline } from "ionicons/icons";
 
 import { connectToPanel as connectToPanelUtil } from "utils/connectToPanel";
 
-const renderSteps = steps =>
-  steps.map(step => {
-    const { label, status } = step;
-
-    const iconMap = {
-      pending: () => <IonSpinner slot="start"></IonSpinner>,
-      success: () => (
-        <IonIcon icon={checkmarkCircleOutline} slot="start"></IonIcon>
-      ),
-      error: () => <IonIcon icon={closeCircleOutline} slot="start"></IonIcon>
-    };
-
-    const icon = iconMap[status];
-    return (
-      <IonItem>
-        {icon()}
-        <IonText>{label}</IonText>
-      </IonItem>
-    );
-  });
+const baseDefaultAdminCredentials = {
+  gatewayAddress: "192.168.0.1",
+  user: "admin",
+  password: "admin"
+};
 
 const CheckNetwork = props => {
+  const {
+    history: {
+      location: {
+        state: { router }
+      }
+    }
+  } = props;
   const [steps, setSteps] = useState([]);
 
   const [displayPanelPasswordPrompt, togglePanelPasswordPrompt] = useState(
@@ -48,11 +40,9 @@ const CheckNetwork = props => {
     setPanelPasswordPromptCallback
   ] = useState(() => {});
 
-  const [panelData, setPanelData] = useState({
-    gatewayAddress: "192.168.0.1",
-    user: "admin",
-    password: "admin"
-  });
+  const [panelData, setPanelData] = useState(
+    router.defaultAdminCredentials || baseDefaultAdminCredentials
+  );
 
   const [retried, setRetried] = useState(false);
 
@@ -92,7 +82,8 @@ const CheckNetwork = props => {
       } else {
         pushStep(initialStep);
       }
-      await connectToPanelUtil(panelData);
+      let connectToPanelResult = await connectToPanelUtil(router, panelData);
+      console.log(connectToPanelResult);
       replaceStep({
         id: "connectToPanel",
         label: `Connected to administration panel`,
@@ -115,6 +106,27 @@ const CheckNetwork = props => {
   useEffect(() => {
     checkNetwork();
   }, [panelData]);
+
+  const renderSteps = steps =>
+    steps.map(step => {
+      const { id, label, status } = step;
+
+      const iconMap = {
+        pending: () => <IonSpinner slot="start"></IonSpinner>,
+        success: () => (
+          <IonIcon icon={checkmarkCircleOutline} slot="start"></IonIcon>
+        ),
+        error: () => <IonIcon icon={closeCircleOutline} slot="start"></IonIcon>
+      };
+
+      const icon = iconMap[status];
+      return (
+        <IonItem key={id}>
+          {icon()}
+          <IonText>{label}</IonText>
+        </IonItem>
+      );
+    });
 
   return (
     <IonPage className="CheckNetwork">

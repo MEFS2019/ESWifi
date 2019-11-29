@@ -1,8 +1,21 @@
-export const connectToPanel = data =>
-  new Promise((resolve, reject) => {
-    if (data.password === "patata") {
-      setTimeout(resolve, 1000);
-    } else {
-      setTimeout(reject, 1000);
-    }
-  });
+import { executeScript } from "./executeScript";
+
+export const connectToPanel = async (routerData, panelData) => {
+  const { gatewayAddress: url, user, password } = panelData;
+  const {
+    scripts: { login: loginScript }
+  } = routerData;
+  try {
+    const result = await executeScript({
+      url,
+      args: {
+        user,
+        password
+      },
+      code: routerData.loginScript
+    });
+    return result;
+  } catch (error) {
+    return error;
+  }
+};

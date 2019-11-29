@@ -18,7 +18,7 @@ import "./Start.css";
 const Start = props => {
   const handleContinue = () => {
     const { history } = props;
-    history.push("/check");
+    history.push("/start/selectRouter");
   };
 
   const handleOpenSettings = () => {
