@@ -6,6 +6,8 @@ Proyecto Cybercamp 2019
 
 
 ![](https://github.com/MEFS2019/ESWifi/workflows/Android%20CI/badge.svg)
+[![Known Vulnerabilities](https://snyk.io/test/github/MEFS2019/ESWifi/badge.svg?targetFile=android/app/build.gradle)](https://snyk.io/test/github/MEFS2019/ESWifi?targetFile=android/app/build.gradle)
+
 
 
 ## Useful scripts
