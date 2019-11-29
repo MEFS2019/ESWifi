@@ -15,7 +15,7 @@ const BtnDashboard = props => {
 
     return (
         < IonButton onClick={onClick} style={{width: '65%'}} shape="round" expand="block" size="large" name="test" >
-            < IonItem style={{width: '100%', font: "inherit"}}>
+            <IonItem lines="none" color="#3880ff" style={{width: '100%', font: "inherit"}}>
                 <IonIcon slot="start" color={ color ? "success" : "danger" } icon={checkbox}  />
                 {name}
             </IonItem >
