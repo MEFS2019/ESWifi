@@ -18,6 +18,7 @@ import CheckNetwork from "pages/CheckNetwork";
 import WebViewDebugger from "pages/WebViewDebugger";
 import Dashboard from "pages/Dashboard";
 import QR from "pages/QR";
+import Slides from "pages/Slides";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/debug" component={WebViewDebugger} exact={true} />
           <Route path="/dashboard" component={Dashboard} exact={true} />
           <Route path="/qr" component={QR} exact={true} />
+          <Route path="/slides" component={Slides} exact={true} />
           <Route
             path="/webViewDebugger"
             component={WebViewDebugger}
@@ -60,7 +62,7 @@ const App = () => (
           />
           <Route
             path="/"
-            render={() => <Redirect to="/start" />}
+            render={() => <Redirect to="/slides" />}
             exact={true}
           />
         </IonRouterOutlet>
