@@ -27,12 +27,11 @@ const Dashboard = props => {
 
     const [showModal, setShowModal] = useState(false);
 
-    //TODO No funciona el método
     const handleRoute = (event, route) => {
         console.log(route);
         event.preventDefault();
         const { history } = props;
-        setShowModal(true);
+        //setShowModal(true);
         history.push("/dashboard/" + route);
     };
 

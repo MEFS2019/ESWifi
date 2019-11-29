@@ -11,10 +11,10 @@ import {
 
 const BtnDashboard = props => {
 
-    const { data: name, state: color } = props;
+    const { data: name, state: color, onClick } = props;
 
     return (
-        < IonButton style={{width: '65%'}} shape="round" expand="block" size="large" name="test" >
+        < IonButton onClick={onClick} style={{width: '65%'}} shape="round" expand="block" size="large" name="test" >
             < IonItem style={{width: '100%', font: "inherit"}}>
                 <IonIcon slot="start" color={ color ? "success" : "danger" } icon={checkbox}  />
                 {name}
