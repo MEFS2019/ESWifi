@@ -15,8 +15,3 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: ./android/gradlew build
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: app-release-unsigned.apk
-        path: /home/runner/work/ESWifi/android/app/build/outputs/apk/release
