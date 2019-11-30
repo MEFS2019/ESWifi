@@ -69,6 +69,7 @@ export default [
           gatewayAddress: "http://192.168.1.1",
           user: "admin",
           password: "admin"
+          new_password: "admin2"
         },
         flows: {
           login: [
@@ -116,6 +117,57 @@ export default [
                   if(document.getElementById("mainFrame").contentWindow.document.querySelector("#wifi_pri_2g_wps_switch").value == "desactivar"){
                       document.getElementById("mainFrame").contentWindow.document.querySelector("#wifi_pri_2g_wps_switch").click()
                 	document.getElementById('mainFrame').contentWindow.document.querySelector("#bt_save").click();
+                  esWiFi.resolve();
+                });
+              `
+              }
+            }
+          ],
+          adminPassword: [
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                document.location.href = "/index.htm"
+                `
+              }
+            },
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: false,
+                code: `
+                document.getElementById('topFrame').contentWindow.document.querySelector("#hmenu-advconfig > span").click()
+
+                const mainlistener =  (ev) => {
+
+
+                document.getElementById("mainFrame").removeEventListener('load',mainlistener)
+
+                document.getElementById("mainFrame").contentWindow.document.querySelector("#menu_30 > td > a").click()
+
+                document.getElementById("mainFrame").addEventListener('load', secondlistener)
+
+                }
+
+                const secondlistener = (ev) => {
+
+
+                document.getElementById("mainFrame").removeEventListener('load',secondlistener)
+
+                document.getElementById("mainFrame").contentWindow.document.querySelector("#opasswd").value = esWiFi.args.password;
+
+                document.getElementById("mainFrame").contentWindow.document.querySelector("#npasswd").value = esWiFi.args.new_password;
+
+                document.getElementById("mainFrame").contentWindow.document.querySelector("#cpasswd").value = esWiFi.args.new_password
+
+                document.getElementById("mainFrame").contentWindow.document.querySelector("#bt_save").click()
+
+                }
+
+                document.getElementById("mainFrame").addEventListener('load',mainlistener)
+                document.getElementById('mainFrame').contentWindow.document.querySelector("#bt_save").click();
                   esWiFi.resolve();
                 });
               `
