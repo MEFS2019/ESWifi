@@ -1,7 +1,5 @@
 # ESWifi
 
-Proyecto Cybercamp 2019
-
 Snyk: [![Known Vulnerabilities](https://snyk.io/test/github/MEFS2019/ESWifi/badge.svg?targetFile=android/app/build.gradle)](https://snyk.io/test/github/MEFS2019/ESWifi?targetFile=android/app/build.gradle)
 
 Greenkeeper: [![Greenkeeper badge](https://badges.greenkeeper.io/MEFS2019/ESWifi.svg)](https://greenkeeper.io/)
@@ -23,6 +21,7 @@ Sonarcloud: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/mea
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=ncloc)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
 
+## About
 
 ESWifi is a solution for domestic routers to easily make them secure, no technical skills needed.
 
@@ -44,7 +43,15 @@ You can contribute with simple scripts, which are loaded into the application. T
 
 #### How to install
 
-	` npm install `
+```
+git clone https://github.com/MEFS2019/ESWifi
+
+cd ESWifi
+
+npm install
+
+```
+
 
 #### Useful scripts to test the app
 
@@ -53,6 +60,45 @@ You can contribute with simple scripts, which are loaded into the application. T
 - `npm run build:sync`: Same as build, but also copies the built files to the native projects and adds any new native dependencies.
 - `npm run open:[ios/android]`: Opens the native project in its corresponding IDE (Android Studio/Xcode).
 
+### Documentation
+
+For more information about the proyect, visit the [Wiki](https://github.com/MEFS2019/ESWifi/wiki/home).
+
+### Features
+
+#### OpenWRT
+
+- [x] Change Wifi Password
+- [x] Change Admin Password
+- [x] Change SSID
+- [x] NO WPS
+- [x] Secure Cypher Algorithm
+- [ ] Limit IPs
+- [ ] Upload firmware
+- [ ] Filter MAC
+- [ ] Lower Power WiFi
+- [ ] Visitors WiFi
+
+#### Orange
+
+- [ ] Change Wifi Password
+- [x] Change Admin Password
+- [ ] Change SSID
+- [x] NO WPS
+- [x] Secure Cypher Algorithm
+- [ ] Limit IPs
+- [ ] Upload firmware
+- [ ] Filter MAC
+- [ ] Lower Power WiFi
+- [ ] Visitors WiFi
+
 ### License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Authors
+
+* **Miguel Hernández Boza** ([@Miguel000](https://github.com/Miguel000))
+* **Esperanza Bringas** ([@maesbrisa](https://github.com/maesbrisa))
+* **Fernando Sanchiz** ([@ferquinz](https://github.com/ferquinz))
+* **Santiago Espada** ([@SantiEspada](https://github.com/SantiEspada))
