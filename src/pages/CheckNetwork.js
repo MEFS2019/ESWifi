@@ -10,7 +10,9 @@ import {
   IonList,
   IonSpinner,
   IonIcon,
-  IonAlert
+  IonAlert,
+  IonModal,
+  IonButton
 } from "@ionic/react";
 import { closeCircleOutline, checkmarkCircleOutline } from "ionicons/icons";
 
@@ -23,6 +25,9 @@ const baseDefaultAdminCredentials = {
 };
 
 const CheckNetwork = props => {
+
+  const [showModal, setShowModal] = useState(false);
+
   const {
     history: {
       location: {
@@ -149,9 +154,8 @@ const CheckNetwork = props => {
               text: "I need help",
               cssClass: "secondary",
               handler: () => {
-                alert(
-                  "Follow these steps to connect to your router as admin: - Verify that your computer is connected to the router using either an Ethernet cable or a wireless connection. - Identify the IP address of the router. Most routers are manufactured to use a default address such as 192.168.0.1, 192.168.1.1, 192.168.2.1, or 192.168.1.100. - Open a web browser such as Microsoft Edge, Internet Explorer, Chrome, or Firefox and request a connection to the router using its IP address. For example, type http://192.168.1.1 in the address bar to connect to a router that has 192.168.1.1 as its IP address. - Enter the administrative login information to authenticate and access the admin settings."
-                );
+                
+                setShowModal(true);
                 return false;
               }
             },
@@ -183,6 +187,16 @@ const CheckNetwork = props => {
             }
           ]}
         ></IonAlert>
+        <IonModal isOpen={showModal}>
+          Follow these steps to connect to your router as admin:
+          <ol>
+            <li>Verify that your computer is connected to the router using either an Ethernet cable or a wireless connection. </li>
+            <li>Identify the IP address of the router. Most routers are manufactured to use a default address such as 192.168.0.1, 192.168.1.1, 192.168.2.1, or 192.168.1.100. </li>
+            <li>Open a web browser such as Microsoft Edge, Internet Explorer, Chrome, or Firefox and request a connection to the router using its IP address.For example, type http: //192.168.1.1 in the address bar to connect to a router that has 192.168.1.1 as its IP address. </li>
+            <li>Enter the administrative login information to authenticate and access the admin settings.</li>
+          </ol>
+          <IonButton onClick={() => setShowModal(false)}>Close</IonButton>
+        </IonModal>
       </IonContent>
     </IonPage>
   );
