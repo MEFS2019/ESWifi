@@ -23,13 +23,9 @@ const baseDefaultAdminCredentials = {
 };
 
 const CheckNetwork = props => {
-  const {
-    history: {
-      location: {
-        state: { router }
-      }
-    }
-  } = props;
+  const { history } = props;
+  const { location: { state: { router = {} } = {} } = {} } = history;
+
   const [steps, setSteps] = useState([]);
 
   const [displayPanelPasswordPrompt, togglePanelPasswordPrompt] = useState(
@@ -82,12 +78,13 @@ const CheckNetwork = props => {
       } else {
         pushStep(initialStep);
       }
-      let connectToPanelResult = await connectToPanelUtil(router, panelData);
+      await connectToPanelUtil(router, panelData);
       replaceStep({
         id: "connectToPanel",
         label: `Connected to administration panel`,
         status: "success"
       });
+      goToDashboard();
     } catch (error) {
       replaceStep({
         id: "connectToPanel",
@@ -98,8 +95,12 @@ const CheckNetwork = props => {
     }
   };
 
+  const goToDashboard = () => {
+    history.push("/dashboard", { router, panelData });
+  };
+
   const checkNetwork = async () => {
-    connectToPanel();
+    await connectToPanel();
   };
 
   useEffect(() => {
@@ -140,8 +141,8 @@ const CheckNetwork = props => {
           backdropDismiss={false}
           translucent
           header="Oops"
-          subHeader="We need some more info to access your network administration panel"
-          message="Please, check if your Gateway IP address, user name and password are correct."
+          subHeader="We need some more information to access your network administration panel"
+          message="Please, check if your Gateway IP address, user name and password are correct"
           isOpen={displayPanelPasswordPrompt}
           onDidDismiss={() => panelPasswordPromptCallback(null)}
           buttons={[

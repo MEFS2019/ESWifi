@@ -29,16 +29,28 @@ export default [
                 document.forms[0].submit();
               `
               }
-
+            },
+            {
+              type: "executeScript",
+              details: {
+                code: `
+                var warningEl = document.querySelector('.alert-message.warning');
+                if(warningEl) {
+                  esWiFi.reject('Invalid password');
+                } else {
+                  esWiFi.resolve();
+                }
+              `
+              }
             }
           ],
-          wifiPassword: [
+          adminPass: [
             {
               type: "executeScript",
               details: {
                 resolveOnNavigation: true,
                 code: `
-                document.location.href = "/cgi-bin/luci/admin/system/admin"
+                document.location.href = "/cgi-bin/luci/admin/system/admin";
                 `
               }
             },
@@ -47,9 +59,9 @@ export default [
               details: {
                 resolveOnNavigation: true,
                 code: `
-                document.getElementById("cbid.system._pass.pw1").value = esWiFi.args.password
-                document.getElementById("cbid.system._pass.pw2").value = esWiFi.args.password
-                document.forms[0].submit()
+                document.getElementById("cbid.system._pass.pw1").value = esWiFi.args.password;
+                document.getElementById("cbid.system._pass.pw2").value = esWiFi.args.password;
+                document.forms[0].submit();
               `
               }
             }

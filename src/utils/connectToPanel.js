@@ -1,25 +1,20 @@
 import { BrowserSession } from "utils/BrowserSession";
 
-export const connectToPanel = async (routerData, panelData) => {
+export const connectToPanel = async (routerData, panelData, hidden = true) => {
   const { gatewayAddress: url, user, password } = panelData;
   const {
-    flows: { login: loginFlow, wifiPassword }
+    flows: { login: loginFlow }
   } = routerData;
 
   const loginArgs = {
     user,
     password
   };
-  const wifiArgs = {
-    password: "1234"
-  };
 
-
-  const session = new BrowserSession({ url, hidden: false });
+  const session = new BrowserSession({ url, hidden });
   try {
     await session.runFlow({ flow: loginFlow, args: loginArgs });
-    await session.runFlow({ flow: wifiPassword, args: wifiArgs });
-    return true;
+    return session;
   } catch (error) {
     alert(error);
     throw new Error(error);
