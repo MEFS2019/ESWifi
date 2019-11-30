@@ -9,7 +9,8 @@ export default [
         defaultAdminCredentials: {
           gatewayAddress: "http://192.168.1.1",
           user: "root",
-          password: "root"
+          password: "root",
+          ssid: 'randomwrt'
         },
         flows: {
           login: [
@@ -53,7 +54,51 @@ export default [
               `
               }
             }
-          ]
+          ],
+          randomSSID: [
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                document.location.href = "cgi-bin/luci/admin/network/wireless/radio0.network1"
+                `
+              }
+            },
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                	a = document.querySelector("#cbid\\.wireless\\.default_radio0\\.ssid")
+                	a.setAttribute("value",esWiFi.args.ssid)
+                	document.querySelector("#maincontent > form > div.cbi-page-actions > input.cbi-button.cbi-button-apply").click()
+              `
+              }
+            }
+          ],
+          listDevices: [
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                document.location.href = "cgi-bin/luci/admin/network/dhcp?tab.dhcp.cfg01411c=advanced"
+                `
+              }
+            },
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                	document.querySelector("#lease_status_table")
+                	document.querySelector("#cbid\\.dhcp\\.cfg01411c\\.dhcpleasemax").value 
+              `
+              }
+            }
+          ],
+
         }
       }
     ]
