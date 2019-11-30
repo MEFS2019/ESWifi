@@ -1,6 +1,6 @@
 import { BrowserSession } from "utils/BrowserSession";
 
-export const connectToPanel = async (routerData, panelData) => {
+export const connectToPanel = async (routerData, panelData, hidden = true) => {
   const { gatewayAddress: url, user, password } = panelData;
   const {
     flows: { login: loginFlow }
@@ -11,12 +11,13 @@ export const connectToPanel = async (routerData, panelData) => {
     password
   };
 
-  const session = new BrowserSession({ url, hidden: false });
+  const session = new BrowserSession({ url });
   try {
     await session.runFlow({ flow: loginFlow, args: loginArgs });
-    return true;
+    await session.navigate({ url });
+    return session;
   } catch (error) {
-    alert(error);
+    console.log(error);
     throw new Error(error);
   }
 };

@@ -15,18 +15,22 @@ const parseMessageURI = url => {
 
 export class BrowserSession {
   browser = null;
+  hidden = true;
 
-  constructor({ url, hidden = true }) {
+  constructor(args) {
+    this.navigate(args);
+  }
+
+  navigate({ url, hidden = true }) {
+    this.hidden = hidden;
     this.browser = InAppBrowser.create(
       url,
       "_blank",
-      `hidden=${hidden ? "yes" : "no"}`
+      `hidden=${
+        this.hidden ? "yes" : "no"
+      },clearcache=yes,clearsessioncache=yes`
     );
-  }
-
-  navigate({ url }) {
     return new Promise(resolve => {
-      this.browser.open(url, "_self");
       const observable = this.browser.on("loadstop").subscribe(() => {
         resolve();
         observable.unsubscribe();
@@ -76,12 +80,14 @@ export class BrowserSession {
           }, timeout);
         }
       };
+      // alert('llegamoss')
       const observable = this.browser.on("loadstop").subscribe(event => {
         const { url } = event;
         if (resolveOnNavigation) {
           resolve();
           observable.unsubscribe();
         } else {
+          console.log(url, MESSAGE_URL);
           if (url.includes(MESSAGE_URL)) {
             const { type, detail } = parseMessageURI(url);
             if (type === "resolve") {
@@ -95,8 +101,8 @@ export class BrowserSession {
             setTimer();
           }
         }
+        this.browser.executeScript({ code: script });
       });
-      this.browser.executeScript({ code: script });
     });
   }
 
@@ -107,11 +113,12 @@ export class BrowserSession {
         try {
           await this[type]({ ...details, args });
         } catch (error) {
+          debugger;
           throw new Error(error);
         }
       }
     }
-    this.browser.hide();
+    // this.browser.hide();
     return true;
   }
 }
