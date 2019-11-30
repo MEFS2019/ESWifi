@@ -19,7 +19,6 @@ const SelectRouter = props => {
   const { history } = props;
 
   const handleRouterSelection = router => {
-    console.log(router);
     history.push("/start/check", { router });
   };
 

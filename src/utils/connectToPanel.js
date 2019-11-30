@@ -14,7 +14,6 @@ export const connectToPanel = async (routerData, panelData) => {
   const session = new BrowserSession({ url, hidden: false });
   try {
     await session.runFlow({ flow: loginFlow, args: loginArgs });
-    alert("termino el runflow pero desde connect2panel");
     return true;
   } catch (error) {
     alert(error);

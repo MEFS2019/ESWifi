@@ -32,13 +32,11 @@ export default [
             {
               type: "executeScript",
               details: {
+                resolveOnNavigation: true,
                 code: `
-                window.esWiFi = esWiFi;
                 document.querySelector("#maincontent > form > div.cbi-map > div.cbi-section > div > div:nth-child(1) > div > input").value = esWiFi.args.user;
                 document.querySelector("#maincontent > form > div.cbi-map > div.cbi-section > div > div.cbi-value.cbi-value-last > div > input").value = esWiFi.args.password;
-                window.esWiFi.resolve();
-                alert(3);
-                // setTimeout(() => document.forms[0].submit());
+                document.forms[0].submit();
               `
               }
             }

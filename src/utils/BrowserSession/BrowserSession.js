@@ -1,11 +1,27 @@
 import { InAppBrowser } from "@ionic-native/in-app-browser";
-import { buildScript } from "./buildScript";
+import { buildScript, MESSAGE_URL } from "./buildScript";
+
+const parseMessageURI = url => {
+  const trimmedUrl = url.replace(MESSAGE_URL, "");
+  const [type, rawDetail] = trimmedUrl.split("/");
+  const detail = decodeURIComponent(rawDetail);
+  try {
+    const finalDetail = JSON.parse(detail);
+    return { type, detail: finalDetail };
+  } catch (e) {
+    return { type, detail };
+  }
+};
 
 export class BrowserSession {
   browser = null;
 
   constructor({ url, hidden = true }) {
-    this.browser = InAppBrowser.create(url, "_blank", `usewkwebview=yes`);
+    this.browser = InAppBrowser.create(
+      url,
+      "_blank",
+      `hidden=${hidden ? "yes" : "no"}`
+    );
   }
 
   navigate({ url }) {
@@ -23,7 +39,6 @@ export class BrowserSession {
     return new Promise((resolve, reject) => {
       const observable = this.browser.on("loadstop").subscribe(event => {
         const { url: browserUrl } = event;
-        console.log(url, regExp, browserUrl);
         if (
           (url && browserUrl === url) ||
           (regExp && new RegExp(regExp).test(browserUrl))
@@ -42,21 +57,46 @@ export class BrowserSession {
     });
   }
 
-  executeScript({ code = "", args = {}, timeout = 10 * 1000 }) {
+  executeScript({
+    code = "",
+    resolveOnNavigation = false,
+    args = {},
+    timeout = 10 * 1000
+  }) {
     let timer = null;
-    console.log(1);
+    let oldUrl = null;
     return new Promise((resolve, reject) => {
+      // see buildScript.js for more context hehe
       const script = buildScript({ code, args });
-      console.log(2);
-      const observable = this.browser.on("message").subscribe(event => {
-        const {
-          data: { action }
-        } = event;
-        alert(action);
+      const setTimer = () => {
+        if (!timer) {
+          timer = setTimeout(() => {
+            reject("Timeout exceeded");
+            observable.unsubscribe();
+          }, timeout);
+        }
+      };
+      const observable = this.browser.on("loadstop").subscribe(event => {
+        const { url } = event;
+        if (resolveOnNavigation) {
+          resolve();
+          observable.unsubscribe();
+        } else {
+          if (url.includes(MESSAGE_URL)) {
+            const { type, detail } = parseMessageURI(url);
+            if (type === "resolve") {
+              resolve(detail);
+              observable.unsubscribe();
+            } else if (type === "reject") {
+              reject(detail);
+              observable.unsubscribe();
+            }
+          } else {
+            setTimer();
+          }
+        }
       });
       this.browser.executeScript({ code: script });
-      console.log(script);
-      console.log(3);
     });
   }
 
@@ -65,16 +105,12 @@ export class BrowserSession {
       const { type, details } = step;
       if (this[type]) {
         try {
-          console.log("estoy corriendo ", type);
           await this[type]({ ...details, args });
-          console.log("terminé ", type);
         } catch (error) {
-          console.log(error);
           throw new Error(error);
         }
       }
     }
-    console.log("terminé nomas");
     this.browser.hide();
     return true;
   }
