@@ -95,6 +95,32 @@ export default [
               `
               }
             }
+          ],
+          wps: [
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                document.location.href = "/index.htm"
+                `
+              }
+            },
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: false,
+                code: `
+                document.getElementById('topFrame').contentWindow.document.querySelector("#hmenu-config").click()
+                document.getElementById("mainFrame").addEventListener('load', function() {
+                  if(document.getElementById("mainFrame").contentWindow.document.querySelector("#wifi_pri_2g_wps_switch").value == "desactivar"){
+                      document.getElementById("mainFrame").contentWindow.document.querySelector("#wifi_pri_2g_wps_switch").click()
+                	document.getElementById('mainFrame').contentWindow.document.querySelector("#bt_save").click();
+                  esWiFi.resolve();
+                });
+              `
+              }
+            }
           ]
         }
       }
