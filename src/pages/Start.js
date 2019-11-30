@@ -38,7 +38,7 @@ const Start = props => {
               <IonCol size="11">
                 <h2>Check your network</h2>
                 <p>
-                  You're currently connected to Vodafone-EJEJEXD. Continue if
+                  You're currently connected to Vodafone-8943. Continue if
                   that is the network you want to securize.
                 </p>
               </IonCol>
