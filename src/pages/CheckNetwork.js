@@ -150,7 +150,7 @@ const CheckNetwork = props => {
               cssClass: "secondary",
               handler: () => {
                 alert(
-                  "aqui habra unos docs to wapos sobre como encontrar esta informasión"
+                  "Follow these steps to connect to your router as admin: - Verify that your computer is connected to the router using either an Ethernet cable or a wireless connection. - Identify the IP address of the router. Most routers are manufactured to use a default address such as 192.168.0.1, 192.168.1.1, 192.168.2.1, or 192.168.1.100. - Open a web browser such as Microsoft Edge, Internet Explorer, Chrome, or Firefox and request a connection to the router using its IP address. For example, type http://192.168.1.1 in the address bar to connect to a router that has 192.168.1.1 as its IP address. - Enter the administrative login information to authenticate and access the admin settings."
                 );
                 return false;
               }

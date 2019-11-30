@@ -76,6 +76,7 @@ export class BrowserSession {
           }, timeout);
         }
       };
+      // alert('llegamoss')
       const observable = this.browser.on("loadstop").subscribe(event => {
         const { url } = event;
         if (resolveOnNavigation) {
@@ -95,8 +96,8 @@ export class BrowserSession {
             setTimer();
           }
         }
+        this.browser.executeScript({ code: script });
       });
-      this.browser.executeScript({ code: script });
     });
   }
 
@@ -107,6 +108,7 @@ export class BrowserSession {
         try {
           await this[type]({ ...details, args });
         } catch (error) {
+          debugger;
           throw new Error(error);
         }
       }

@@ -57,5 +57,47 @@ export default [
         }
       }
     ]
+  },
+  {
+    id: "orange",
+    displayName: "LiveBox2-OrangeES",
+    routerList: [
+      {
+        id: "orange",
+        displayName: "LiveBox2 Orange",
+        defaultAdminCredentials: {
+          gatewayAddress: "http://192.168.1.1",
+          user: "admin",
+          password: "admin"
+        },
+        flows: {
+          login: [
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                document.location.href = "/index.htm"
+                `
+              }
+            },
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: false,
+                code: `
+                var mainFrame = document.getElementById('mainFrame');
+                mainFrame.addEventListener('load', function() {
+                	mainFrame.contentWindow.document.querySelector("#mainContent > table > tbody > tr > td:nth-child(2) > ul > li:nth-child(2) > div.readonly > input[type=password]").value = esWiFi.args.password;
+                	document.getElementById('mainFrame').contentWindow.document.querySelector("#bt_save").click();
+                  esWiFi.resolve();
+                });
+              `
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 ];
