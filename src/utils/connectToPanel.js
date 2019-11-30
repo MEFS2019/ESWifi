@@ -1,21 +1,22 @@
-import { executeScript } from "./executeScript";
+import { BrowserSession } from "utils/BrowserSession";
 
 export const connectToPanel = async (routerData, panelData) => {
   const { gatewayAddress: url, user, password } = panelData;
   const {
-    scripts: { login: loginScript }
+    flows: { login: loginFlow }
   } = routerData;
+
+  const loginArgs = {
+    user,
+    password
+  };
+
+  const session = new BrowserSession({ url, hidden: false });
   try {
-    const result = await executeScript({
-      url,
-      args: {
-        user,
-        password
-      },
-      code: routerData.loginScript
-    });
-    return result;
+    await session.runFlow({ flow: loginFlow, args: loginArgs });
+    return true;
   } catch (error) {
-    return error;
+    alert(error);
+    throw new Error(error);
   }
 };

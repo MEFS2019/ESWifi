@@ -17,7 +17,7 @@ import { closeCircleOutline, checkmarkCircleOutline } from "ionicons/icons";
 import { connectToPanel as connectToPanelUtil } from "utils/connectToPanel";
 
 const baseDefaultAdminCredentials = {
-  gatewayAddress: "192.168.0.1",
+  gatewayAddress: "http://192.168.0.1",
   user: "admin",
   password: "admin"
 };
@@ -83,7 +83,6 @@ const CheckNetwork = props => {
         pushStep(initialStep);
       }
       let connectToPanelResult = await connectToPanelUtil(router, panelData);
-      console.log(connectToPanelResult);
       replaceStep({
         id: "connectToPanel",
         label: `Connected to administration panel`,

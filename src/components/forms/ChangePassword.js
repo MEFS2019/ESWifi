@@ -7,7 +7,6 @@ const ChangePassword = () => {
   const handleFormSubmit = event => {
     event.preventDefault();
     const values = getFormValues(event.target);
-    console.log(values);
   };
 
   return (

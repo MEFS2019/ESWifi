@@ -8,22 +8,26 @@ export const executeScript = ({
   preserveInstance = false
 }) =>
   new Promise((resolve, reject) => {
-    const browser =
-      browserInstance || InAppBrowser.create(url, "_blank", "hidden=yes");
+    const browser = browserInstance || InAppBrowser.create(url, "_blank");
+    if (browserInstance) {
+      browser.open(url, "_self");
+      browser.show();
+    }
     browser.on("loadstop").subscribe(() => {
       let script = code;
       if (args) {
-        script = `var window.__ESWIFI__SCRIPT_ARGS = ${JSON.stringify(
+        script = `window.__ESWIFI__SCRIPT_ARGS = ${JSON.stringify(
           args
-        )};${code}`;
+        )}; ${code}`;
       }
       browser
         .executeScript({ code: script })
-        .then(status => {
+        .then(([status]) => {
           if (status !== "ok") {
             reject(status);
           } else {
             if (preserveInstance) {
+              browser.hide();
               resolve(browser);
             } else {
               browser.close();
