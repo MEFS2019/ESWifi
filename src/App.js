@@ -69,11 +69,11 @@ const App = () => (
         <IonTabBar slot="bottom">
           <IonTabButton tab="start" href="/start">
             <IonIcon icon={flash} />
-            <IonLabel>Securizame esta</IonLabel>
+            <IonLabel>Securizate</IonLabel>
           </IonTabButton>
           <IonTabButton tab="debug" href="/debug">
             <IonIcon icon={bug} />
-            <IonLabel>Debuguiar WebView</IonLabel>
+            <IonLabel>Debug WebView</IonLabel>
           </IonTabButton>
           <IonTabButton tab="dashboard" href ="/dashboard">
             <IonIcon icon = { apps } />

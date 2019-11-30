@@ -31,7 +31,7 @@ const WebViewDebugger = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>WebView juguetón</IonTitle>
+          <IonTitle>WebView</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -44,14 +44,14 @@ const WebViewDebugger = () => {
           ></IonInput>
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">EsCriPt toOh ReEsShuLoOn</IonLabel>
+          <IonLabel position="stacked">Script</IonLabel>
           <IonTextarea
             required
             name="script"
             onIonChange={ev => setScript(ev.detail.value)}
           ></IonTextarea>
         </IonItem>
-        <IonButton onClick={openWebView}>Dale fuegote</IonButton>
+        <IonButton onClick={openWebView}>Try your luck</IonButton>
       </IonContent>
     </IonPage>
   );
