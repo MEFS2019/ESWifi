@@ -1,30 +1,36 @@
 import React from "react";
-import {
-    IonButton,
-    IonCol
-} from "@ionic/react";
+import { IonButton, IonIcon, IonItem } from "@ionic/react";
 
-import {
-    checkbox
-} from "ionicons/icons";
+import { checkbox } from "ionicons/icons";
 
-import  "./Button.css";
+import "./Button.css";
 
 const BtnDashboard = props => {
+  const { data: name, state: color, onClick } = props;
 
-    const { data: name, state: color, onClick } = props;
-
-    return (
-        < IonButton onClick={onClick} style={{width: '70%'}} shape="round" expand="block" size="large" name="test" >
-                <IonCol size="3">
-                <div style={{marginLeft: 'inherit'}} class={ color ? "led-green" : "led-red" }></div>
-                </IonCol>
-                <IonCol class="ion-text-left" size="9">
-                {name}
-                </IonCol>
-        </IonButton>
-    );
-
+  return (
+    <IonButton
+      onClick={onClick}
+      style={{ width: "65%" }}
+      shape="round"
+      expand="block"
+      size="large"
+      name="test"
+    >
+      <IonItem
+        lines="none"
+        color="#3880ff"
+        style={{ width: "100%", font: "inherit" }}
+      >
+        <IonIcon
+          slot="start"
+          color={color ? "success" : "danger"}
+          icon={checkbox}
+        />
+        {name}
+      </IonItem>
+    </IonButton>
+  );
 };
 
 export default BtnDashboard;

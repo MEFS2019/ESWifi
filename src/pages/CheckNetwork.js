@@ -25,16 +25,10 @@ const baseDefaultAdminCredentials = {
 };
 
 const CheckNetwork = props => {
-
   const [showModal, setShowModal] = useState(false);
+  const { history } = props;
+  const { location: { state: { router = {} } = {} } = {} } = history;
 
-  const {
-    history: {
-      location: {
-        state: { router }
-      }
-    }
-  } = props;
   const [steps, setSteps] = useState([]);
 
   const [displayPanelPasswordPrompt, togglePanelPasswordPrompt] = useState(
@@ -87,12 +81,13 @@ const CheckNetwork = props => {
       } else {
         pushStep(initialStep);
       }
-      let connectToPanelResult = await connectToPanelUtil(router, panelData);
+      await connectToPanelUtil(router, panelData);
       replaceStep({
         id: "connectToPanel",
         label: `Connected to administration panel`,
         status: "success"
       });
+      goToDashboard();
     } catch (error) {
       replaceStep({
         id: "connectToPanel",
@@ -103,8 +98,12 @@ const CheckNetwork = props => {
     }
   };
 
+  const goToDashboard = () => {
+    history.push("/dashboard", { router, panelData });
+  };
+
   const checkNetwork = async () => {
-    connectToPanel();
+    await connectToPanel();
   };
 
   useEffect(() => {
@@ -145,8 +144,8 @@ const CheckNetwork = props => {
           backdropDismiss={false}
           translucent
           header="Oops"
-          subHeader="We need some more info to access your network administration panel"
-          message="Please, check if your Gateway IP address, user name and password are correct."
+          subHeader="We need some more information to access your network administration panel"
+          message="Please, check if your Gateway IP address, user name and password are correct"
           isOpen={displayPanelPasswordPrompt}
           onDidDismiss={() => panelPasswordPromptCallback(null)}
           buttons={[
@@ -154,7 +153,6 @@ const CheckNetwork = props => {
               text: "I need help",
               cssClass: "secondary",
               handler: () => {
-                
                 setShowModal(true);
                 return false;
               }
@@ -190,10 +188,26 @@ const CheckNetwork = props => {
         <IonModal isOpen={showModal}>
           Follow these steps to connect to your router as admin:
           <ol>
-            <li>Verify that your computer is connected to the router using either an Ethernet cable or a wireless connection. </li>
-            <li>Identify the IP address of the router. Most routers are manufactured to use a default address such as 192.168.0.1, 192.168.1.1, 192.168.2.1, or 192.168.1.100. </li>
-            <li>Open a web browser such as Microsoft Edge, Internet Explorer, Chrome, or Firefox and request a connection to the router using its IP address.For example, type http: //192.168.1.1 in the address bar to connect to a router that has 192.168.1.1 as its IP address. </li>
-            <li>Enter the administrative login information to authenticate and access the admin settings.</li>
+            <li>
+              Verify that your computer is connected to the router using either
+              an Ethernet cable or a wireless connection.{" "}
+            </li>
+            <li>
+              Identify the IP address of the router. Most routers are
+              manufactured to use a default address such as 192.168.0.1,
+              192.168.1.1, 192.168.2.1, or 192.168.1.100.{" "}
+            </li>
+            <li>
+              Open a web browser such as Microsoft Edge, Internet Explorer,
+              Chrome, or Firefox and request a connection to the router using
+              its IP address.For example, type http: //192.168.1.1 in the
+              address bar to connect to a router that has 192.168.1.1 as its IP
+              address.{" "}
+            </li>
+            <li>
+              Enter the administrative login information to authenticate and
+              access the admin settings.
+            </li>
           </ol>
           <IonButton onClick={() => setShowModal(false)}>Close</IonButton>
         </IonModal>

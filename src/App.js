@@ -10,12 +10,11 @@ import {
   IonTabs
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { flash, bug, apps, qrScanner } from "ionicons/icons";
+import { flash, apps, qrScanner } from "ionicons/icons";
 
 import Start from "pages/Start";
 import SelectRouter from "pages/SelectRouter";
 import CheckNetwork from "pages/CheckNetwork";
-import WebViewDebugger from "pages/WebViewDebugger";
 import Dashboard from "pages/Dashboard";
 import QR from "pages/QR";
 import Slides from "pages/Slides";
@@ -51,15 +50,9 @@ const App = () => (
             exact={true}
           />
           <Route path="/start/check" component={CheckNetwork} exact={true} />
-          <Route path="/debug" component={WebViewDebugger} exact={true} />
           <Route path="/dashboard" component={Dashboard} exact={true} />
           <Route path="/qr" component={QR} exact={true} />
           <Route path="/slides" component={Slides} exact={true} />
-          <Route
-            path="/webViewDebugger"
-            component={WebViewDebugger}
-            exact={true}
-          />
           <Route
             path="/"
             render={() => <Redirect to="/slides" />}
@@ -71,16 +64,12 @@ const App = () => (
             <IonIcon icon={flash} />
             <IonLabel>Securizate</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="debug" href="/debug">
-            <IonIcon icon={bug} />
-            <IonLabel>Debug WebView</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="dashboard" href ="/dashboard">
-            <IonIcon icon = { apps } />
+          <IonTabButton tab="dashboard" href="/dashboard">
+            <IonIcon icon={apps} />
             <IonLabel>Dashboard</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="qr" href ="/qr">
-            <IonIcon icon = { qrScanner } />
+          <IonTabButton tab="qr" href="/qr">
+            <IonIcon icon={qrScanner} />
             <IonLabel>QR</IonLabel>
           </IonTabButton>
         </IonTabBar>
