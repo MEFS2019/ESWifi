@@ -48,7 +48,9 @@ git clone https://github.com/MEFS2019/ESWifi
 
 cd ESWifi
 
-npm install ```
+npm install
+
+```
 
 
 #### Useful scripts to test the app
