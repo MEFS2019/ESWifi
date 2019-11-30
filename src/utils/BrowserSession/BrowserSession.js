@@ -20,18 +20,13 @@ export class BrowserSession {
     this.browser = InAppBrowser.create(
       url,
       "_blank",
-      `hidden=${hidden ? "yes" : "no"}`
+      `hidden=${hidden ? "yes" : "no"},clearcache=yes,clearsessioncache=yes`
     );
   }
 
   navigate({ url }) {
-    return new Promise(resolve => {
-      this.browser.open(url, "_self");
-      const observable = this.browser.on("loadstop").subscribe(() => {
-        resolve();
-        observable.unsubscribe();
-      });
-    });
+    const code = `document.location.href = "${url}";`;
+    return this.executeScript({ code, resolveOnNavigation: true });
   }
 
   waitForUrl({ url = "", regExp = "", timeout = 10 * 1000 }) {

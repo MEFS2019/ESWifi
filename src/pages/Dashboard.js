@@ -35,19 +35,24 @@ const Dashboard = props => {
 
   const actions = {
     adminPass: async newPassword => {
-      const session = await connectToPanel(router, panelData, false);
+      let session = null;
+      try {
+        session = await connectToPanel(router, panelData);
+      } catch (error) {
+        console.log(error);
+      }
       const {
         flows: { adminPass }
       } = router;
+      if (!session) return;
       try {
-        alert(JSON.stringify(panelData));
         await session.runFlow({
           flow: adminPass,
           args: { password: newPassword }
         });
-        alert(2);
+        alert("Success!");
       } catch (error) {
-        alert("error");
+        console.log(error);
       }
     }
   };

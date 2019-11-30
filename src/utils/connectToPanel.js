@@ -14,6 +14,7 @@ export const connectToPanel = async (routerData, panelData, hidden = true) => {
   const session = new BrowserSession({ url, hidden });
   try {
     await session.runFlow({ flow: loginFlow, args: loginArgs });
+    await session.navigate({ url });
     return session;
   } catch (error) {
     alert(error);

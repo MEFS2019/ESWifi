@@ -9,7 +9,7 @@ export default [
         defaultAdminCredentials: {
           gatewayAddress: "http://192.168.1.1",
           user: "root",
-          password: "root"
+          password: "9209302930"
         },
         flows: {
           login: [
@@ -59,8 +59,10 @@ export default [
               details: {
                 resolveOnNavigation: true,
                 code: `
+                console.log(document.getElementById("cbid.system._pass.pw1"));
                 document.getElementById("cbid.system._pass.pw1").value = esWiFi.args.password;
                 document.getElementById("cbid.system._pass.pw2").value = esWiFi.args.password;
+                console.log(esWiFi.args.password);
                 document.forms[0].submit();
               `
               }
