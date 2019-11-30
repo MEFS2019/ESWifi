@@ -5,17 +5,7 @@ export default [
     routerList: [
       {
         id: "generic",
-        displayName: "Generic OpenWRT router"
-      }
-    ]
-  },
-  {
-    id: "orange-sp",
-    displayName: "Orange España",
-    routerList: [
-      {
-        id: "livebox2",
-        displayName: "LiveBox 2",
+        displayName: "Generic OpenWRT router",
         defaultAdminCredentials: {
           gatewayAddress: "http://192.168.1.1",
           user: "root",
@@ -32,13 +22,34 @@ export default [
             {
               type: "executeScript",
               details: {
+                resolveOnNavigation: true,
                 code: `
-                window.esWiFi = esWiFi;
                 document.querySelector("#maincontent > form > div.cbi-map > div.cbi-section > div > div:nth-child(1) > div > input").value = esWiFi.args.user;
                 document.querySelector("#maincontent > form > div.cbi-map > div.cbi-section > div > div.cbi-value.cbi-value-last > div > input").value = esWiFi.args.password;
-                window.esWiFi.resolve();
-                alert(3);
-                // setTimeout(() => document.forms[0].submit());
+                document.forms[0].submit();
+              `
+              }
+
+            }
+          ],
+          wifiPassword: [
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                document.location.href = "/cgi-bin/luci/admin/system/admin"
+                `
+              }
+            },
+            {
+              type: "executeScript",
+              details: {
+                resolveOnNavigation: true,
+                code: `
+                document.getElementById("cbid.system._pass.pw1").value = esWiFi.args.password
+                document.getElementById("cbid.system._pass.pw2").value = esWiFi.args.password
+                document.forms[0].submit()
               `
               }
             }

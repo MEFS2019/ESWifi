@@ -1,53 +1,58 @@
 # ESWifi
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/MEFS2019/ESWifi.svg)](https://greenkeeper.io/)
-
 Proyecto Cybercamp 2019
 
+Snyk: [![Known Vulnerabilities](https://snyk.io/test/github/MEFS2019/ESWifi/badge.svg?targetFile=android/app/build.gradle)](https://snyk.io/test/github/MEFS2019/ESWifi?targetFile=android/app/build.gradle)
 
+Greenkeeper: [![Greenkeeper badge](https://badges.greenkeeper.io/MEFS2019/ESWifi.svg)](https://greenkeeper.io/)
+
+Actions:
 ![](https://github.com/MEFS2019/ESWifi/workflows/Android%20CI/badge.svg)
-[![Known Vulnerabilities](https://snyk.io/test/github/MEFS2019/ESWifi/badge.svg?targetFile=android/app/build.gradle)](https://snyk.io/test/github/MEFS2019/ESWifi?targetFile=android/app/build.gradle)
+![](https://github.com/MEFS2019/ESWifi/workflows/APK%20lint%20analysis/badge.svg)
+
+Lgtm: [![Total alerts](https://img.shields.io/lgtm/alerts/g/MEFS2019/ESWifi.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/MEFS2019/ESWifi/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/MEFS2019/ESWifi.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/MEFS2019/ESWifi/context:javascript)
+
+Sonarcloud: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=alert_status)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=bugs)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=code_smells)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=security_rating)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=sqale_index)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=ncloc)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=MEFS2019_ESWifi&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=MEFS2019_ESWifi)
 
 
+ESWifi is a solution for domestic routers to easily make them secure, no technical skills needed.
 
-## Useful scripts
+## Getting started
 
-- `start`: Serves the app with hot reload enabled. Useful for development.
-- `build`: Creates a production-ready build.
-- `build:sync`: Same as build, but also copies the built files to the native projects and adds any new native dependencies.
-- `open:[ios/android]`: Opens the native project in its corresponding IDE (Android Studio/Xcode).
+### For users
 
-## Propuesta enviada
+Currently is available for Android app and iOS. We are working on a desktop app for Windows and Unix. You can get it [here](https://github.com/MEFS2019/ESWifi/packages).
 
-MEF - ESWifi: configuración de Wi-Fis para usuario final sin conocimientos técnicos.
+### For developers
 
-Queremos que cualquier persona pueda tener configurada de manera segura su punto de acceso WiFi sin necesidad de ser técnico y con la mínima interacción posible con el portal de administración. Para realizar esta configuración se seguirán las buenas practicas proporcionadas por [INCIBE](https://www.incibe.es/sites/default/files/contenidos/guias/doc/guia-de-seguridad-en-redes-wifi.pdf)
+You can contribute with simple scripts, which are loaded into the application. These are the [standard](https://github.com/MEFS2019/ESWifi/wiki/3.-Add-new-firmware), we will be happy to receive your pull requests :)
 
-Uno de los problemas principales es la poca homogeneidad entre proveedores de servicio. Los más conocidos son:
-- Movistar
-- MasMovil
-- Vodafone
-- Orange
-- Yoigo
+#### Requirements
 
-Para esté hackathon trataremos de realizar las pruebas en dos entornos distintos, uno de ellos utilizando un router flasheando con un sistema OpenSource como es [OpenWRT](https://openwrt.org/) y por otro lado utilizaremos uno de proveedor de Orange (Livebox Fibra). La idea es que no sea dependiente del proveedor y la aplicación sea capaz de realizar las configuraciones de todas ellas.
+- Npm 6.4.1+.
+- Android Studio or Xcode, depending on what platform do you want to compile.
+- Java 8+.
 
-# Hito 1
+#### How to install
 
-Montar la infraestructura y la fase de diseño y flujo de la configuración.
+	` npm install `
 
-![Componentes](/Imagenes/Inicio.jpg)
+#### Useful scripts to test the app
 
-Utilizaremos para el desarrollo de la aplicación [Ionic](https://ionicframework.com/) y [Capacitor](https://capacitor.ionicframework.com/)
+- `npm run start`: Serves the app with hot reload enabled. Useful for development.
+- `npm run build`: Creates a production-ready build.
+- `npm run build:sync`: Same as build, but also copies the built files to the native projects and adds any new native dependencies.
+- `npm run open:[ios/android]`: Opens the native project in its corresponding IDE (Android Studio/Xcode).
 
-La funcionalidad inicial será la de poder conectarnos a la wifi del usuario mediante las credenciales que nos proporcione. Una vez veamos que son correctas, comprobaremos la robustez de la contraseña.
+### License
 
-Para comprobar la robustez podemos utilizar algún servicio que compruebe si aparece en un fuga de datos como puede ser [HaveIBeenPwen](https://haveibeenpwned.com/API/v3#PwnedPasswords) o comprobando manualmente si sigue unas mínimas reglas de seguridad, como las que proporciona [OSI](https://www.osi.es/es/contrasenas#robustas).
-
-Debemos asegurarnos que la contraseña tenga:
-
-- longitud mínima de ocho caracteres
-- mayúsculas
-- minúsculas
-- números
-- símbolos
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
