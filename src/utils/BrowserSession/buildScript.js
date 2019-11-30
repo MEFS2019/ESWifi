@@ -1,7 +1,8 @@
-
 import { isPlatform } from "@ionic/react";
 
-export const MESSAGE_URL = isPlatform("ios") ? "about:blank//message/" : "eswifi://message/";
+export const MESSAGE_URL = isPlatform("ios")
+  ? "about:blank//message/"
+  : "eswifi://message/";
 
 /*
   This file basically injects arguments and two convenient functions to enable

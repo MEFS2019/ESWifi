@@ -81,7 +81,7 @@ const CheckNetwork = props => {
       } else {
         pushStep(initialStep);
       }
-      await connectToPanelUtil(router, panelData);
+      const result = await connectToPanelUtil(router, panelData);
       replaceStep({
         id: "connectToPanel",
         label: `Connected to administration panel`,
@@ -89,6 +89,7 @@ const CheckNetwork = props => {
       });
       goToDashboard();
     } catch (error) {
+      console.log(error);
       replaceStep({
         id: "connectToPanel",
         label: `Connection failed`,

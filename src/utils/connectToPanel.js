@@ -11,13 +11,13 @@ export const connectToPanel = async (routerData, panelData, hidden = true) => {
     password
   };
 
-  const session = new BrowserSession({ url, hidden });
+  const session = new BrowserSession({ url });
   try {
     await session.runFlow({ flow: loginFlow, args: loginArgs });
     await session.navigate({ url });
     return session;
   } catch (error) {
-    alert(error);
+    console.log(error);
     throw new Error(error);
   }
 };
