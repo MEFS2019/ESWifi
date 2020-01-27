@@ -11,7 +11,7 @@
     "@ionic-native/in-app-browser": "^5.17.1",
     "@ionic/react": "^4.11.0",
     "@ionic/react-router": "^4.11.0",
-    "@types/jest": "^24.0.18",
+    "@types/jest": "^25.1.0",
     "@types/node": "^12.7.12",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
