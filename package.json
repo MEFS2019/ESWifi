@@ -9,7 +9,7 @@
     "@deckdeckgo/qrcode": "^1.0.0-rc.1-1",
     "@ionic-native/core": "^5.17.1",
     "@ionic-native/in-app-browser": "^5.17.1",
-    "@ionic/react": "^4.11.0",
+    "@ionic/react": "^5.0.2",
     "@ionic/react-router": "^4.11.0",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.12",
